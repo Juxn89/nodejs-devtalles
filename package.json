@@ -1,0 +1,25 @@
+{
+  "name": "nodejs-devtalles",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Juxn89/nodejs-devtalles.git"
+  },
+  "keywords": [
+    "node",
+    "nodejs",
+    "node.js",
+    "backend"
+  ],
+  "author": "Juan Gómez <<gb.jc@outlook.com>>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Juxn89/nodejs-devtalles/issues"
+  },
+  "homepage": "https://github.com/Juxn89/nodejs-devtalles#readme"
+}
