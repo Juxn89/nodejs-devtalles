@@ -1,12 +1,11 @@
-# Node.js course | DevTalles
-## Summary
-This repository is part of **Node.js** course on **[DevTalles](https://cursos.devtalles.com/)**; here you find several topics to learn
-**Node.js** from scratch
-
-## Branches
-### Summary
-Here you can see all branches of the course with its description
-
-### List of branches
-- [Node.js basic](https://github.com/juxn89/nodejs-devtalles/tree/00-Nodejs-Basics)
-- [Hello world](https://github.com/Juxn89/nodejs-devtalles/tree/01-hello-world)
+# Node.js Basics
+## NPM
+### Commands
+- Initialize a project with node: ```npm init``` or ```npm init -y```
+- Execute a script: ```npm run script_name```
+- Installa a package: ```npm install package_name``` or ```npm i package_name```
+    - Flag **-D**: indicates that is a dev dependency.
+    - Flag **-E**: install a exact version
+- Unistall a package: ```npm uninstall package_name ```
+- Install a specific version: ```npm i package_name@version``` **e.g.** ```npm i colors@1.0.0```
+- Update package: ```npm update```
