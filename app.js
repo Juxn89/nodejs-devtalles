@@ -1,6 +1,6 @@
 require('colors')
 const Tasks = require('./models/tasks');
-const { Menu, Pause, ReadInput } = require('./helpers/inquirer');
+const { Menu, Pause, ReadInput, listTasksToDelete, showCheckList } = require('./helpers/inquirer');
 const { saveRecord, getRecords } = require('./helpers/database');
 
 console.clear()
@@ -30,6 +30,20 @@ const main = async () => {
 				break;
 			case '4':
 				tasks.listAllTasksCompleted(false)
+				break;
+			case 5:
+				const ids = await showCheckList(tasks.listOfTasks)
+				tasks.toogleCompleted(ids)
+				break;
+			case '6':
+				const id = await listTasksToDelete(tasks.listOfTasks)
+				if(id !== '0') {
+					const confirmDelete = await confirm('Are you sure?')
+
+					if(confirmDelete) {
+						tasks.deleteTask(id)
+					}					
+				}
 				break;
 			default:
 				break;

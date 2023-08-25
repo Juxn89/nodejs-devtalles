@@ -44,7 +44,7 @@ class Tasks {
 				.filter(task => task.completedAt !== null)
 				.forEach((task, index) => {
 					const idx = `${index + 1}`.green
-					console.log(`${ idx }${'.'.green} ${task.desc} :: Completed at: ${ task.completedAt }`)
+					console.log(`${ idx }${'.'.green} ${task.desc} :: Completed at: ${ task.completedAt.green }`)
 			})
 		}
 		else {
@@ -55,6 +55,28 @@ class Tasks {
 					console.log(`${ idx }${'.'.green} ${task.desc} :: ${ 'Pending'.red }`)
 			})
 		}
+	}
+
+	deleteTask = (id = '') => {
+		if(this._listOfTasks[id]) {
+			delete this._listOfTasks[id]
+		}
+	}
+
+	toogleCompleted = (ids = []) => {
+		ids.forEach(id => {
+			const task = this._listOfTasks[id];
+			
+			if(!task.completedAt) {
+				tasks.completedAt = new Date().toISOString()
+			}
+		})
+
+		this.listOfTasks.forEach(task => {
+			if(!ids.includes(task.id)) {
+				this._listOfTasks[task.id].completedAt = null; 
+			}
+		})
 	}
 }
 
