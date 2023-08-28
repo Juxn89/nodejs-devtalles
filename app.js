@@ -2,11 +2,13 @@ const express = require('express')
 
 const app = express()
 
+app.set('view engine', 'hbs')
+
 // Serve static content
 app.use( express.static('public') )
 
 app.get('/', (req, res) => {
-	res.send('Index page')
+	res.render('home')
 })
 
 app.use('/generic', (req, res) => {
