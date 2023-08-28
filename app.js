@@ -9,6 +9,14 @@ app.get('/', (req, res) => {
 	res.send('Index page')
 })
 
+app.use('/generic', (req, res) => {
+	res.sendFile(`${__dirname}/public/generic.html`)
+})
+
+app.use('/elements', (req, res) => {
+	res.sendFile(`${__dirname}/public/elements.html`)
+})
+
 app.get('/hello-world', (req, res) => {
 	res.send('hello world from express!')
 })
