@@ -1,5 +1,7 @@
 const express = require('express')
 const hbs = require('hbs')
+require('dotenv').config()
+const config = require('./config/index')
 
 const app = express()
 
@@ -39,4 +41,4 @@ app.get('*', (req, res) => {
 	res.sendFile( __dirname + '/public/404.html')
 })
 
-app.listen(3000)
+app.listen(config.serverPort)
