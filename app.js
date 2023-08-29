@@ -1,22 +1,33 @@
 const express = require('express')
+const hbs = require('hbs')
 
 const app = express()
 
 app.set('view engine', 'hbs')
+hbs.registerPartials(`${__dirname}/views/partials`, (err) => { })
 
 // Serve static content
 app.use( express.static('public') )
 
 app.get('/', (req, res) => {
-	res.render('home')
+	res.render('home', {
+		name: 'Juan',
+		title: 'Course of Node.js'
+	})
 })
 
 app.use('/generic', (req, res) => {
-	res.sendFile(`${__dirname}/public/generic.html`)
+	res.render('generic', {
+		name: 'Juan',
+		title: 'Course of Node.js'
+	})
 })
 
 app.use('/elements', (req, res) => {
-	res.sendFile(`${__dirname}/public/elements.html`)
+	res.render('elements', {
+		name: 'Juan',
+		title: 'Course of Node.js'
+	})
 })
 
 app.get('/hello-world', (req, res) => {
