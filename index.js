@@ -1,6 +1,6 @@
 require('dotenv').config()
 const Seach = require("./models/search");
-const { Menu, Pause, ReadInput } = require("./helpers/inquirer");
+const { Menu, Pause, ReadInput, listOfPlaces } = require("./helpers/inquirer");
 
 const main = async () => {
 	const search = new Seach()	
@@ -12,7 +12,9 @@ const main = async () => {
 		switch (optionSeletected) {
 			case 1:
 				const place = await ReadInput('City:')
-				await search.city(place)
+				const placesFound = await search.city(place)
+				const placeSelected = await listOfPlaces(placesFound)
+				console.log(placeSelected)
 				break;
 		}
 

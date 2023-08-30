@@ -57,11 +57,12 @@ const ReadInput = async (message) => {
 	return desc;
 }
 
-const listTasksToDelete = async (tasks = []) => {
-	const choices = tasks.map((task, index) => {
+const listOfPlaces = async (places = []) => {
+	
+	const choices = places.map((place, index) => {
 		const idx = `${index + 1}`.green
 		return {
-			value: task.id, name: `${idx}${'.'.green} ${task.desc}`
+			value: idx, name: `${idx}${'.'.green} ${place.name}`
 		}
 	})
 
@@ -71,7 +72,7 @@ const listTasksToDelete = async (tasks = []) => {
 		{
 			type: 'list',
 			name: 'id',
-			message: 'Delete',
+			message: 'Select',
 			choices
 		}
 	]
@@ -122,7 +123,7 @@ module.exports = {
 	Menu,
 	Pause,
 	ReadInput,
-	listTasksToDelete,
+	listOfPlaces,
 	confirm,
 	showCheckList
 }

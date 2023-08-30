@@ -18,15 +18,14 @@ class Seach {
 				query: place
 			}
 
-			axios.get(`${BASE_URL}?access_key=${config.positionStackAPI}`)
-				.then((result) => {
-					console.log(result.data)
-					
-				}).catch((err) => {
-					console.error(err)
-				});
+			const { data } = await axios.get(`${BASE_URL}`, { params });
 
-			return []
+			return data.data.map(place => ({
+				id: `${place.country_code},${place.longitude},${place.latitude}`,
+				name: `${place.country}, ${place.county}, ${place.name}`,
+				lng: place.longitude,
+				lat: place.latitude
+			}))
 		} catch (error) {
 			// console.error(error)
 			return []
