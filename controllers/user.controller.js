@@ -2,9 +2,12 @@ const {response, request} = require('express')
 const HTTP_STATUS =  require('../helpers/httpStatus')
 
 const getUser = (req = request, res = response) => {
+	const { limit = '', offset = '' } = req.query
 	res.status(HTTP_STATUS.ok).json({
 		ok: true,
-		msg: 'Get API | Controller'
+		msg: 'Get API | Controller',
+		limit,
+		offset
 	})
 }
 
@@ -21,9 +24,11 @@ const postUser = (req = request, res = response) => {
 }
 
 const putUser = (req = request, res = response) => {
+	const { id } = req.params
 	res.status(HTTP_STATUS.ok).json({
 		ok: true,
-		msg: 'Put API | Controller'
+		msg: 'Put API | Controller',
+		id
 	})
 }
 
