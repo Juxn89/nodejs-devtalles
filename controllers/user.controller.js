@@ -9,9 +9,14 @@ const getUser = (req = request, res = response) => {
 }
 
 const postUser = (req = request, res = response) => {
+	const { name = '', lastName = '' } = req.body
+
 	res.status(HTTP_STATUS.ok).json({
 		ok: true,
-		msg: 'Post API | Controller'
+		msg: 'Post API | Controller',
+		name,
+		lastName,
+		fullName: `${ name } ${ lastName }`
 	})
 }
 
