@@ -1,4 +1,6 @@
 const {response, request} = require('express')
+const bcrypt = require('bcrypt')
+const Users = require('../models/Users')
 const HTTP_STATUS =  require('../helpers/httpStatus')
 
 const getUser = (req = request, res = response) => {
@@ -11,15 +13,27 @@ const getUser = (req = request, res = response) => {
 	})
 }
 
-const postUser = (req = request, res = response) => {
-	const { name = '', lastName = '' } = req.body
+const postUser = async (req = request, res = response) => {
+	const { name, email, password, role } = req.body;
+	const user = new Users({ name, email, password, role });
+
+	// Verify if email already exists
+
+	// Encript password
+	const salt = bcrypt.genSaltSync()
+	user.password = bcrypt.hashSync(password, salt)
+
+	// Save on DB
+	try {
+		await user.save()		
+	} catch (error) {
+		console.log(error)
+	}
 
 	res.status(HTTP_STATUS.ok).json({
 		ok: true,
 		msg: 'Post API | Controller',
-		name,
-		lastName,
-		fullName: `${ name } ${ lastName }`
+		user
 	})
 }
 
