@@ -18,6 +18,13 @@ const postUser = async (req = request, res = response) => {
 	const user = new Users({ name, email, password, role });
 
 	// Verify if email already exists
+	const emailAlreadyExists = await Users.findOne({ email })
+	if(emailAlreadyExists) {
+		return 	res.status(HTTP_STATUS.badRequest).json({
+			ok: false,
+			msg: `This email is already registered`
+		})
+	}
 
 	// Encript password
 	const salt = bcrypt.genSaltSync()
