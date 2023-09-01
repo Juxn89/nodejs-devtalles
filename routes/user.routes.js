@@ -12,12 +12,12 @@ router.post('/', [
 	check('name', 'Name is required').not().isEmpty(),
 	check('email', 'Email is not valid').isEmail(),
 	check('password', 'Password is required and must be more than 6 characters').isLength({ min: 6 }),
-	check('role', custom( async (role = '') => { 
+	check('role').custom( async (role = '') => { 
 		const roleExists = await Roles.findOne({ role })
 		if(!roleExists) {
 			throw new Error(`${ role } role is not valid`)
 		}
-	} )),
+	}),
 	validateFields
 ], postUser)
 
