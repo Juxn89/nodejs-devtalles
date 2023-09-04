@@ -4,13 +4,18 @@ const {response, request} = require('express')
 const { Users } = require('../models')
 const HTTP_STATUS =  require('../helpers/httpStatus')
 
-const getUser = (req = request, res = response) => {
-	const { limit = '', offset = '' } = req.query
+const getUser = async (req = request, res = response) => {
+	const { limit = 5, offset = 0 } = req.query
+
+	const users = await Users
+		.find()
+		.limit(limit)
+		.skip(offset)
+
 	res.status(HTTP_STATUS.ok).json({
 		ok: true,
 		msg: 'Get API | Controller',
-		limit,
-		offset
+		users
 	})
 }
 
