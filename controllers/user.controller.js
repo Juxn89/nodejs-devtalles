@@ -8,13 +8,6 @@ const getUser = async (req = request, res = response) => {
 	const { limit = 5, offset = 0 } = req.query
 	const query = { isActive: true }
 
-	// const users = await Users
-	// 	.find(query)
-	// 	.skip(offset)
-	// 	.limit(limit)
-
-	// const totalRecords = await Users.countDocuments(query)
-
 	const response = await Promise.all([
 		Users.countDocuments(query),
 		Users
@@ -80,10 +73,17 @@ const patchUser = (req = request, res = response) => {
 	})
 }
 
-const deleteUser = (req = request, res = response) => {
+const deleteUser = async (req = request, res = response) => {
+	const { id } = req.params
+	
+	// const user = await Users.findByIdAndDelete(id)
+
+	const user = await Users.findByIdAndUpdate(id, { isActive: false })
+	
 	res.status(HTTP_STATUS.ok).json({
 		ok: true,
-		msg: 'Delete API | Controller'
+		msg: 'Delete API | Controller',
+		user
 	})
 }
 

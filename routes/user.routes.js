@@ -27,6 +27,8 @@ router.put('/:id', [
 
 router.patch('/', patchUser)
 
-router.delete('/', deleteUser)
+router.delete('/', [
+	
+],deleteUser)
 
 module.exports = router;
