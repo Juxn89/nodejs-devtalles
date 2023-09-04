@@ -6,15 +6,29 @@ const HTTP_STATUS =  require('../helpers/httpStatus')
 
 const getUser = async (req = request, res = response) => {
 	const { limit = 5, offset = 0 } = req.query
+	const query = { isActive: true }
 
-	const users = await Users
-		.find()
-		.limit(limit)
+	// const users = await Users
+	// 	.find(query)
+	// 	.skip(offset)
+	// 	.limit(limit)
+
+	// const totalRecords = await Users.countDocuments(query)
+
+	const response = await Promise.all([
+		Users.countDocuments(query),
+		Users
+		.find(query)
 		.skip(offset)
+		.limit(limit)
+	])
+
+	const [totalRecords, users] = response
 
 	res.status(HTTP_STATUS.ok).json({
 		ok: true,
 		msg: 'Get API | Controller',
+		totalRecords,
 		users
 	})
 }
