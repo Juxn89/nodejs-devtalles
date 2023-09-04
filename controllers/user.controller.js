@@ -1,6 +1,7 @@
-const {response, request} = require('express')
 const bcrypt = require('bcrypt')
-const Users = require('../models/Users')
+const {response, request} = require('express')
+
+const { Users } = require('../models')
 const HTTP_STATUS =  require('../helpers/httpStatus')
 
 const getUser = (req = request, res = response) => {
@@ -35,12 +36,21 @@ const postUser = async (req = request, res = response) => {
 	})
 }
 
-const putUser = (req = request, res = response) => {
+const putUser = async (req = request, res = response) => {
 	const { id } = req.params
+	const { _id, password, google, email, ...rest } = req.body
+
+	if(password) {
+		const salt = bcrypt.genSaltSync()
+		rest.password = bcrypt.hashSync(password, salt)
+	}
+
+	const user = await Users.findByIdAndUpdate(id, rest)
+
 	res.status(HTTP_STATUS.ok).json({
 		ok: true,
 		msg: 'Put API | Controller',
-		id
+		user
 	})
 }
 
