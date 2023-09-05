@@ -1,7 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const Config = require('../config/index')
-const userRoutes = require('../routes/user.routes')
+const {userRoutes, authRoutes} = require('../routes/')
 const { dbConnection } = require('../db/config')
 
 class Server {
@@ -34,6 +34,7 @@ class Server {
 	}
 
 	routes(){
+		this.app.use('/api/auth', authRoutes)
 		this.app.use('/api/users', userRoutes)
 	}
 
