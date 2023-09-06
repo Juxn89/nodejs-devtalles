@@ -75,15 +75,16 @@ const patchUser = (req = request, res = response) => {
 
 const deleteUser = async (req = request, res = response) => {
 	const { id } = req.params
+	const uid = req.uid;
+	const currentUser = req.user;
 	
 	// const user = await Users.findByIdAndDelete(id)
 
 	const user = await Users.findByIdAndUpdate(id, { isActive: false })
 	
 	res.status(HTTP_STATUS.ok).json({
-		ok: true,
-		msg: 'Delete API | Controller',
-		user
+		user,
+		currentUser
 	})
 }
 
