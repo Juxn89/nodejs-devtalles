@@ -1,6 +1,7 @@
 const { Router } = require('express')
 const { check } = require('express-validator')
 
+const { isAdmin, hasFollowingRole } = require('@middleware/validateRoles')
 const { validateJWT } = require('@middleware/jwtMiddleware')
 const { validateFields } = require('@middleware/validateFields')
 
@@ -32,7 +33,9 @@ router.put('/:id', [
 router.patch('/', patchUser)
 
 router.delete('/:id', [
-	validateJWT
+	validateJWT,
+	// isAdmin
+	hasFollowingRole('ADMIN_ROLE', 'SALES_ROLE')
 ],deleteUser)
 
 module.exports = router;
