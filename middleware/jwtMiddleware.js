@@ -1,10 +1,10 @@
 const jwt = require('jsonwebtoken')
 const { request, response } = require('express')
 
-const { Users } = require('../models')
+const { Users } = require('@models')
 
-const { jwtSecret } = require('../config')
-const httpStatus = require('../helpers/httpStatus')
+const { jwtSecret } = require('@config')
+const httpStatus = require('@helpers/httpStatus')
 
 const validateJWT = async (req = request, res = response, next) => {
 	const token = req.header('x-token')

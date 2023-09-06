@@ -1,9 +1,9 @@
 const bcrypt = require('bcrypt')
 const { response, request } = require('express')
 
-const { Users } = require('../models')
-const httpStatus = require('../helpers/httpStatus')
-const { generateJWT } = require('../helpers/jwt')
+const { Users } = require('@models')
+const httpStatus = require('@helpers/httpStatus')
+const { generateJWT } = require('@helpers/jwt')
 
 const login = async (req = request, res = response) => {
 	const { email, password } = req.body

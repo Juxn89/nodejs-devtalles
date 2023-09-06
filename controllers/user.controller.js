@@ -1,8 +1,8 @@
 const bcrypt = require('bcrypt')
 const {response, request} = require('express')
 
-const { Users } = require('../models')
-const HTTP_STATUS =  require('../helpers/httpStatus')
+const { Users } = require('@models')
+const HTTP_STATUS =  require('@helpers/httpStatus')
 
 const getUser = async (req = request, res = response) => {
 	const { limit = 5, offset = 0 } = req.query
