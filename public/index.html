@@ -3,9 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Access Denied</title>
+    <title>Node.js | Google Sing-in</title>
 </head>
 <body>
-	<h1>Access Denied >=)</h1>
+	<h1>Google Sing-in</h1>
+	<hr />
+
+	<div 
+		id="g_id_onload"
+		data-client_id="130859077207-lumhabor6ha7mfr5l7644r65cterstvj.apps.googleusercontent.com"
+		data-auto_prompt="false"
+		data-callback="handleCredentialResponse"
+	>
+  </div>
+	<div 
+		class="g_id_signin"
+		data-type="standard"
+		data-size="large"
+		data-theme="outline"
+		data-text="sign_in_with"
+		data-shape="rectangular"
+		data-logo_alignment="left">
+	</div>
+
+	<button type="button" id="google_singout">
+		Sing-out
+	</button>
+
+	<script src="https://accounts.google.com/gsi/client" async defer></script>
+	<script>
+		const btnGoogleSingOut = document.querySelector('#google_singout')
+		btnGoogleSingOut.addEventListener('click', () => {
+			google.accounts.id.disableAutoSelect()
+			
+			const email = localStorage.getItem('g-account-email')
+			google.accounts.id.revoke(email, done => {
+				localStorage.clear()
+				location.reload()
+			})
+		})
+
+		function handleCredentialResponse(response) {
+			// Google token or ID_Token
+			console.log('Google token', response.credential);
+
+			const body = { gtoken: response.credential }
+
+			fetch('http://localhost:3000/api/auth/google', { 
+				method: 'POST', 
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(body)
+			})
+			.then(response => response.json())
+			.then(response => {
+				console.log(response)
+				localStorage.setItem('g-account-email', response.user.email)
+			})
+			.catch(err => console.error(err))
+		}
+	</script>
 </body>
 </html>
