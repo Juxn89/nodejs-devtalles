@@ -1,9 +1,11 @@
+const Categories = require('./Categories')
 const Roles = require('./Roles')
-const Users = require('./Users')
 const Server = require('./Server')
+const Users = require('./Users')
 
 module.exports = {
+	Categories,
 	Roles,
-	Users,
-	Server
+	Server,
+	Users
 }
