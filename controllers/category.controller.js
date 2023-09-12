@@ -66,8 +66,6 @@ const updateCategory = async (req = request, res = response) => {
 
 	const existCategoryWithName = await Category.find({ name });
 
-	console.log(existCategoryWithName)
-
 	if(existCategoryWithName.length > 0) {
 		return res.status(httpStatus.badRequest).json({
 			msg: `Category with name "${name}" already exists.`

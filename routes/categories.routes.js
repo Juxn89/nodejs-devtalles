@@ -9,7 +9,7 @@ const {
 	updateCategory, 
 	deleteCategories } = require('@controllers/category.controller')
 
-const { validateJWT, validateFields } = require('../middleware/')
+const { validateJWT, validateFields, isAdmin } = require('../middleware/')
 
 const router = Router();
 
