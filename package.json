@@ -1,5 +1,5 @@
 {
-  "name": "nodejs-devtalles",
+  "name": "web-soscket",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -21,5 +21,10 @@
   "bugs": {
     "url": "https://github.com/Juxn89/nodejs-devtalles/issues"
   },
-  "homepage": "https://github.com/Juxn89/nodejs-devtalles#readme"
+  "homepage": "https://github.com/Juxn89/nodejs-devtalles#readme",
+  "dependencies": {
+    "cors": "2.8.5",
+    "dotenv": "16.3.1",
+    "express": "4.18.2"
+  }
 }
