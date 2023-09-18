@@ -20,7 +20,7 @@ const saveFile = (files, extensionsAllowed = [ 'png', 'jpg', 'jpeg', 'gif' ], de
 				reject(err)			
 			}
 			
-			resolve(`File uploaded to ${ uploadPath }`)
+			resolve(tempNameFile)
 		});
 	})
 }

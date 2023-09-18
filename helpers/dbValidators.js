@@ -50,7 +50,18 @@ const isValidProductPrice = async (price) => {
 	}
 }
 
+const collectionsAllowed = (collection, collectionAllowed = [] ) => {
+	const isIncluded = collectionAllowed.includes(collection)
+
+	if(!isIncluded) {
+		throw new Error(`"${collection}" is not a collection allowed`)
+	}
+
+	return true
+}
+
 module.exports = {
+	collectionsAllowed,
 	emailAlreadyExists,
 	existCategoryID,
 	existProductbyID,
