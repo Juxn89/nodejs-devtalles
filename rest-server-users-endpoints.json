@@ -8,600 +8,733 @@
   "item": [
     {
       "name": "Auth",
-      "request": {
-        "method": "POST",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n    \"email\": \"email_test@test.com\",\r\n    \"password\": \"123456\"\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "http://localhost:3000/api/auth/login",
-          "protocol": "http",
-          "host": ["localhost"],
-          "port": "3000",
-          "path": ["api", "auth", "login"],
-          "query": [
-            {
-              "key": "limit",
-              "value": "1",
-              "disabled": true
+      "item": [
+        {
+          "name": "Auth",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"email_test@test.com\",\r\n    \"password\": \"123456\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
             },
-            {
-              "key": "offset",
-              "value": "3",
-              "disabled": true
+            "url": {
+              "raw": "http://localhost:3000/api/auth/login",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "auth", "login"],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "1",
+                  "disabled": true
+                },
+                {
+                  "key": "offset",
+                  "value": "3",
+                  "disabled": true
+                }
+              ]
             }
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Auth Google login",
-      "request": {
-        "method": "POST",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n    \"gtoken\": \"123\"\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
+          },
+          "response": []
         },
-        "url": {
-          "raw": "http://localhost:3000/api/auth/google",
-          "protocol": "http",
-          "host": ["localhost"],
-          "port": "3000",
-          "path": ["api", "auth", "google"],
-          "query": [
-            {
-              "key": "limit",
-              "value": "1",
-              "disabled": true
+        {
+          "name": "Auth Google login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"gtoken\": \"123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
             },
-            {
-              "key": "offset",
-              "value": "3",
-              "disabled": true
+            "url": {
+              "raw": "http://localhost:3000/api/auth/google",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "auth", "google"],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "1",
+                  "disabled": true
+                },
+                {
+                  "key": "offset",
+                  "value": "3",
+                  "disabled": true
+                }
+              ]
             }
-          ]
+          },
+          "response": []
         }
-      },
-      "response": []
+      ]
     },
     {
       "name": "Categories",
-      "protocolProfileBehavior": {
-        "disableBodyPruning": true
-      },
-      "request": {
-        "method": "GET",
-        "header": [
-          {
-            "key": "x-token",
-            "value": "123",
-            "type": "text"
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "http://localhost:3000/api/categories?limit=2&offset=0",
-          "protocol": "http",
-          "host": ["localhost"],
-          "port": "3000",
-          "path": ["api", "categories"],
-          "query": [
-            {
-              "key": "limit",
-              "value": "2"
+      "item": [
+        {
+          "name": "Categories",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-token",
+                "value": "123",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
             },
-            {
-              "key": "offset",
-              "value": "0"
+            "url": {
+              "raw": "http://localhost:3000/api/categories?limit=2&offset=0",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "categories"],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "2"
+                },
+                {
+                  "key": "offset",
+                  "value": "0"
+                }
+              ]
             }
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Category by ID",
-      "protocolProfileBehavior": {
-        "disableBodyPruning": true
-      },
-      "request": {
-        "method": "GET",
-        "header": [
-          {
-            "key": "x-token",
-            "value": "123",
-            "type": "text"
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
+          },
+          "response": []
         },
-        "url": {
-          "raw": "http://localhost:3000/api/categories/123",
-          "protocol": "http",
-          "host": ["localhost"],
-          "port": "3000",
-          "path": ["api", "categories", "123"],
-          "query": [
-            {
-              "key": "limit",
-              "value": "1",
-              "disabled": true
+        {
+          "name": "Category by ID",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-token",
+                "value": "123",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
             },
-            {
-              "key": "offset",
-              "value": "3",
-              "disabled": true
+            "url": {
+              "raw": "http://localhost:3000/api/categories/123",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "categories", "123"],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "1",
+                  "disabled": true
+                },
+                {
+                  "key": "offset",
+                  "value": "3",
+                  "disabled": true
+                }
+              ]
             }
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Category",
-      "request": {
-        "method": "POST",
-        "header": [
-          {
-            "key": "x-token",
-            "value": "123",
-            "type": "text"
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n    \"name\": \"Bananas\"\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
+          },
+          "response": []
         },
-        "url": {
-          "raw": "http://localhost:3000/api/categories/",
-          "protocol": "http",
-          "host": ["localhost"],
-          "port": "3000",
-          "path": ["api", "categories", ""],
-          "query": [
-            {
-              "key": "limit",
-              "value": "1",
-              "disabled": true
+        {
+          "name": "Category",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "x-token",
+                "value": "123",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Bananas\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
             },
-            {
-              "key": "offset",
-              "value": "3",
-              "disabled": true
+            "url": {
+              "raw": "http://localhost:3000/api/categories/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "categories", ""],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "1",
+                  "disabled": true
+                },
+                {
+                  "key": "offset",
+                  "value": "3",
+                  "disabled": true
+                }
+              ]
             }
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Category",
-      "request": {
-        "method": "PUT",
-        "header": [
-          {
-            "key": "x-token",
-            "value": "123",
-            "type": "text"
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n    \"name\": \"Banana\"\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
+          },
+          "response": []
         },
-        "url": {
-          "raw": "http://localhost:3000/api/categories/123",
-          "protocol": "http",
-          "host": ["localhost"],
-          "port": "3000",
-          "path": ["api", "categories", "123"],
-          "query": [
-            {
-              "key": "limit",
-              "value": "1",
-              "disabled": true
+        {
+          "name": "Category",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "x-token",
+                "value": "123",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Banana\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
             },
-            {
-              "key": "offset",
-              "value": "3",
-              "disabled": true
+            "url": {
+              "raw": "http://localhost:3000/api/categories/123",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "categories", "123"],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "1",
+                  "disabled": true
+                },
+                {
+                  "key": "offset",
+                  "value": "3",
+                  "disabled": true
+                }
+              ]
             }
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Category",
-      "request": {
-        "method": "DELETE",
-        "header": [
-          {
-            "key": "x-token",
-            "value": "123",
-            "type": "text"
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
+          },
+          "response": []
         },
-        "url": {
-          "raw": "http://localhost:3000/api/categories/123",
-          "protocol": "http",
-          "host": ["localhost"],
-          "port": "3000",
-          "path": ["api", "categories", "123"],
-          "query": [
-            {
-              "key": "limit",
-              "value": "1",
-              "disabled": true
+        {
+          "name": "Category",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "x-token",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NGY1ZmM0MmIyM2FjYTI0YTU4OTI4M2YiLCJpYXQiOjE2OTQ0NjAyMDksImV4cCI6MTY5NDQ3NDYwOX0.UqyKmUxs5JaQ-zEdggJtzb2LpQ7ybWA4QRJWgzkhvG4",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
             },
-            {
-              "key": "offset",
-              "value": "3",
-              "disabled": true
+            "url": {
+              "raw": "http://localhost:3000/api/categories/64ff36687e000a290540b102",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "categories", "64ff36687e000a290540b102"],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "1",
+                  "disabled": true
+                },
+                {
+                  "key": "offset",
+                  "value": "3",
+                  "disabled": true
+                }
+              ]
             }
-          ]
+          },
+          "response": []
         }
-      },
-      "response": []
+      ]
     },
     {
       "name": "Products",
-      "protocolProfileBehavior": {
-        "disableBodyPruning": true
-      },
-      "request": {
-        "method": "GET",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "http://localhost:3000/api/products/?limit=10",
-          "protocol": "http",
-          "host": ["localhost"],
-          "port": "3000",
-          "path": ["api", "products", ""],
-          "query": [
-            {
-              "key": "limit",
-              "value": "10"
+      "item": [
+        {
+          "name": "Products",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
             },
-            {
-              "key": "offset",
-              "value": "1",
-              "disabled": true
+            "url": {
+              "raw": "http://localhost:3000/api/products/?limit=10",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "products", ""],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "offset",
+                  "value": "1",
+                  "disabled": true
+                }
+              ]
             }
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Product by ID",
-      "protocolProfileBehavior": {
-        "disableBodyPruning": true
-      },
-      "request": {
-        "method": "GET",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
+          },
+          "response": []
         },
-        "url": {
-          "raw": "http://localhost:3000/api/products/123",
-          "protocol": "http",
-          "host": ["localhost"],
-          "port": "3000",
-          "path": ["api", "products", "123"]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Product",
-      "request": {
-        "method": "POST",
-        "header": [
-          {
-            "key": "x-token",
-            "value": "123",
-            "type": "text"
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n    \"name\": \"Wood Desk 6\",\r\n    \"description\": \"Wood desk\",\r\n    \"price\": -1,\r\n    \"category\": \"123\"\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
+        {
+          "name": "Product by ID",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/products/123",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "products", "123"]
             }
-          }
+          },
+          "response": []
         },
-        "url": {
-          "raw": "http://localhost:3000/api/products/",
-          "protocol": "http",
-          "host": ["localhost"],
-          "port": "3000",
-          "path": ["api", "products", ""]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Product",
-      "request": {
-        "method": "PUT",
-        "header": [
-          {
-            "key": "x-token",
-            "value": "123",
-            "type": "text"
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n    \"name\": \"Wood Desk Minimalist\",\r\n    \"description\": \"Wood Desk Minimalist Style\",\r\n    \"price\": -1000,\r\n    \"category\": \"123\"\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
+        {
+          "name": "Product",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "x-token",
+                "value": "123",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Wood Desk 6\",\r\n    \"description\": \"Wood desk\",\r\n    \"price\": -1,\r\n    \"category\": \"123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/products/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "products", ""]
             }
-          }
+          },
+          "response": []
         },
-        "url": {
-          "raw": "http://localhost:3000/api/products/123",
-          "protocol": "http",
-          "host": ["localhost"],
-          "port": "3000",
-          "path": ["api", "products", "123"]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Product",
-      "request": {
-        "method": "DELETE",
-        "header": [
-          {
-            "key": "x-token",
-            "value": "123",
-            "type": "text"
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "",
-          "options": {
-            "raw": {
-              "language": "json"
+        {
+          "name": "Product",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "x-token",
+                "value": "123",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Wood Desk Minimalist\",\r\n    \"description\": \"Wood Desk Minimalist Style\",\r\n    \"price\": -1000,\r\n    \"category\": \"123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/products/123",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "products", "123"]
             }
-          }
+          },
+          "response": []
         },
-        "url": {
-          "raw": "http://localhost:3000/api/products/123",
-          "protocol": "http",
-          "host": ["localhost"],
-          "port": "3000",
-          "path": ["api", "products", "123"]
+        {
+          "name": "Product",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "x-token",
+                "value": "123",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/products/123",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "products", "123"]
+            }
+          },
+          "response": []
         }
-      },
-      "response": []
+      ]
     },
     {
       "name": "Users",
-      "protocolProfileBehavior": {
-        "disableBodyPruning": true
-      },
-      "request": {
-        "method": "GET",
-        "header": [
-          {
-            "key": "x-token",
-            "value": "123",
-            "type": "text"
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "http://localhost:3000/api/users",
-          "protocol": "http",
-          "host": ["localhost"],
-          "port": "3000",
-          "path": ["api", "users"],
-          "query": [
-            {
-              "key": "limit",
-              "value": "1",
-              "disabled": true
+      "item": [
+        {
+          "name": "Users",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-token",
+                "value": "123",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
             },
-            {
-              "key": "offset",
-              "value": "3",
-              "disabled": true
+            "url": {
+              "raw": "http://localhost:3000/api/users",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "users"],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "1",
+                  "disabled": true
+                },
+                {
+                  "key": "offset",
+                  "value": "3",
+                  "disabled": true
+                }
+              ]
             }
-          ]
+          },
+          "response": []
+        },
+        {
+          "name": "Users",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Juan\",\r\n    \"email\": \"email_test90@test.com\",\r\n    \"password\": \"123456\",\r\n    \"role\": \"ADMIN_ROLE\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/users/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "users", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Users",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"JuanC\",\r\n    \"email\": \"email_test89@test.com\",\r\n    \"password\": \"123456\",\r\n    \"role\": \"USER_ROLE\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/users/123",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "users", "123"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Users",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "x-token",
+                "value": "123",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/users/123",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "users", "123"]
+            }
+          },
+          "response": []
         }
-      },
-      "response": []
+      ]
     },
     {
       "name": "Search",
-      "protocolProfileBehavior": {
-        "disableBodyPruning": true
-      },
-      "request": {
-        "method": "GET",
-        "header": [
-          {
-            "key": "x-token",
-            "value": "123",
-            "type": "text"
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "",
-          "options": {
-            "raw": {
-              "language": "json"
+      "item": [
+        {
+          "name": "Search",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-token",
+                "value": "123",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/search/users/@gmail",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "search", "users", "@gmail"]
             }
-          }
-        },
-        "url": {
-          "raw": "http://localhost:3000/api/search/users/@gmail",
-          "protocol": "http",
-          "host": ["localhost"],
-          "port": "3000",
-          "path": ["api", "search", "users", "@gmail"]
+          },
+          "response": []
         }
-      },
-      "response": []
+      ]
     },
     {
-      "name": "Users",
-      "request": {
-        "method": "POST",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n    \"name\": \"Juan\",\r\n    \"email\": \"email_test90@test.com\",\r\n    \"password\": \"123456\",\r\n    \"role\": \"ADMIN_ROLE\"\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
+      "name": "Upload",
+      "item": [
+        {
+          "name": "Upload | Users",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": ""
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/upload/users/123",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "upload", "users", "123"]
             }
-          }
+          },
+          "response": []
         },
-        "url": {
-          "raw": "http://localhost:3000/api/users/",
-          "protocol": "http",
-          "host": ["localhost"],
-          "port": "3000",
-          "path": ["api", "users", ""]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Users",
-      "request": {
-        "method": "PUT",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n    \"name\": \"JuanC\",\r\n    \"email\": \"email_test89@test.com\",\r\n    \"password\": \"123456\",\r\n    \"role\": \"USER_ROLE\"\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
+        {
+          "name": "Upload",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": ""
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/upload/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "upload", ""]
             }
-          }
+          },
+          "response": []
         },
-        "url": {
-          "raw": "http://localhost:3000/api/users/123",
-          "protocol": "http",
-          "host": ["localhost"],
-          "port": "3000",
-          "path": ["api", "users", "123"]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Users",
-      "request": {
-        "method": "DELETE",
-        "header": [
-          {
-            "key": "x-token",
-            "value": "123",
-            "type": "text"
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "",
-          "options": {
-            "raw": {
-              "language": "json"
+        {
+          "name": "Upload | Products",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": ""
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/upload/products/123",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "upload", "products", "123"]
             }
-          }
+          },
+          "response": []
         },
-        "url": {
-          "raw": "http://localhost:3000/api/users/123",
-          "protocol": "http",
-          "host": ["localhost"],
-          "port": "3000",
-          "path": ["api", "users", "123"]
+        {
+          "name": "Upload | Users",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": ""
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/upload/users/123",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "upload", "users", "123"]
+            }
+          },
+          "response": []
         }
-      },
-      "response": []
+      ]
     }
   ]
 }
