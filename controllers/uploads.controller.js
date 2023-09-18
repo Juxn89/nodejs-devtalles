@@ -1,7 +1,9 @@
+const fileSystem = require('fs')
+const path = require('path')
 const { request, response } = require('express')
 
 const { httpStatus, saveFile } = require('@helpers')
-const { Users, Products } = require('../models')
+const { Users, Products } = require('@models')
 
 const uploadFile = async (req = request, res = response) => {
 	const extensionAllowed = [ 'txt', 'md' ]
@@ -40,6 +42,14 @@ const updateCategoryPicture = async (req = request, res =response) => {
 			return res.status(httpStatus.internalServerError).json({
 				msg: 'Something was wrong'
 			})
+	}
+
+	if(model.img) {
+		const pathImage = path.join(__dirname, '../uploads', collection, model.img)
+
+		if(fileSystem.existsSync(pathImage)) {
+			fileSystem.unlinkSync(pathImage)
+		}
 	}
 
 	const fileName = await saveFile(req.files, undefined, collection)

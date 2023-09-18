@@ -8,13 +8,13 @@ const { uploadFile, updateCategoryPicture } = require('@controllers/uploads.cont
 const router = Router()
 
 router.post('/', [
-	validateFile
+	validateUploadFile
 ], uploadFile)
 
 router.put('/:collection/:id', [
+	validateUploadFile,
 	check('id').isMongoId(),
 	check('collection').custom( c => collectionsAllowed(c, ['users', 'products']) ),
-	validateUploadFile,
 	validateFields
 ], updateCategoryPicture)
 
