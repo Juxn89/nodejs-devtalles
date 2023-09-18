@@ -5,6 +5,44 @@ const { request, response } = require('express')
 const { httpStatus, saveFile } = require('@helpers')
 const { Users, Products } = require('@models')
 
+const getCollection = async (req = request, res = response) => {
+	const { collection, id } = req.params
+	let model;
+
+	switch (collection) {
+		case 'users':
+			model = await Users.findById(id)
+
+			if(!model){
+				return res.status(httpStatus.notFound).json({ msg: `User with ID: ${ id } not found.` })
+			}
+			break;
+		case 'products':
+			model = await Products.findById(id)
+
+			if(!model){
+				return res.status(httpStatus.notFound).json({ msg: `Product with ID: ${ id } not found.` })
+			}
+			break
+		default:
+			return res.status(httpStatus.internalServerError).json({
+				msg: 'Something was wrong'
+			})
+	}
+
+	if(model.img) {
+		const pathImage = path.join(__dirname, '../uploads', collection, model.img)
+
+		if(fileSystem.existsSync(pathImage)) {
+			return res.sendFile(pathImage)
+		}
+	}
+
+	const pathNoImage = path.join(__dirname, '../assets', 'noimage.jpg')
+
+	res.sendFile(pathNoImage)
+}
+
 const uploadFile = async (req = request, res = response) => {
 	const extensionAllowed = [ 'txt', 'md' ]
 	
@@ -60,6 +98,7 @@ const updateCategoryPicture = async (req = request, res =response) => {
 }
 
 module.exports = {
+	getCollection,
 	uploadFile,
 	updateCategoryPicture
 }

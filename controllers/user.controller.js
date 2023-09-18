@@ -38,7 +38,7 @@ const postUser = async (req = request, res = response) => {
 	try {
 		await user.save()		
 	} catch (error) {
-		console.log(error)
+		console.error(error)
 	}
 
 	res.status(HTTP_STATUS.ok).json({

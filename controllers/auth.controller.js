@@ -38,7 +38,7 @@ const login = async (req = request, res = response) => {
 			token
 		})
 	} catch (error) {
-		console.log(error)
+		console.error(error)
 		res.status(httpStatus.internalServerError).json({
 			msg: 'Contact with administrator'
 		})

@@ -36,7 +36,7 @@ const validateJWT = async (req = request, res = response, next) => {
 
 		next()
 	} catch (error) {
-		console.log(error)
+		console.error(error)
 		res.status(httpStatus.unauthorized).json({
 			msg: 'Invalid token'
 		})

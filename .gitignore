@@ -1,5 +1,6 @@
 # CUSTOM IGNORES
-/uploads
+/uploads/products/
+/uploads/users/
 
 # Logs
 logs

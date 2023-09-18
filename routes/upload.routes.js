@@ -3,9 +3,15 @@ const { check } = require('express-validator')
 
 const { validateFields, validateUploadFile } = require('@middleware')
 const { collectionsAllowed } = require('@helpers')
-const { uploadFile, updateCategoryPicture } = require('@controllers/uploads.controller')
+const { uploadFile, updateCategoryPicture, getCollection } = require('@controllers/uploads.controller')
 
 const router = Router()
+
+router.get('/:collection/:id', [	
+	check('id').isMongoId(),
+	check('collection').custom( c => collectionsAllowed(c, ['users', 'products']) ),
+	validateFields
+], getCollection)
 
 router.post('/', [
 	validateUploadFile
