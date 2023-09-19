@@ -16,6 +16,9 @@ class Server {
 
 		// Routes
 		this.routes()
+
+		// Sockets handlers
+		this.sockets()
 	}
 
 	middlewares(){
@@ -36,6 +39,12 @@ class Server {
 	listen(){
 		this.server.listen(Config.serverPort)
 		console.log(`App listening on port ${ Config.serverPort }`)
+	}
+
+	sockets() {
+		this.io.on('connection', socket => {
+			console.log('Client connected!', socket.id)
+		})
 	}
 }
 
