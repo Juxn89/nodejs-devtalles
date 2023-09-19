@@ -2,13 +2,13 @@ const cors = require('cors')
 const express = require('express')
 
 const Config = require('../config')
-const { randomUUID } = require('crypto')
+const { socketController } = require('../sockets/controller')
 
 class Server {
 	constructor(){
 		this.app = express()
 
-		// Socket.io
+		// Socket.io config
 		this.server = require('http').createServer(this.app)
 		this.io = require('socket.io')(this.server)
 
@@ -43,20 +43,7 @@ class Server {
 	}
 
 	sockets() {
-		this.io.on('connection', socket => {
-			// console.log('Client connected!', socket.id)
-
-			socket.on('disconnect', () => {
-				// console.log('Cliend disconnected', socket.id)
-			})
-
-			socket.on('send-message', (paylaod, callback) => {
-				// console.log('Message recived from client:', paylaod)
-				const id = randomUUID()
-				callback(id)
-				this.io.emit('notify-message', 'Message from server')
-			})
-		})
+		this.io.on('connection', socketController)
 	}
 }
 
