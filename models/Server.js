@@ -7,6 +7,10 @@ class Server {
 	constructor(){
 		this.app = express()
 
+		// Socket.io
+		this.server = require('http').createServer(this.app)
+		this.io = require('socket.io')(this.server)
+
 		// Middlewares
 		this.middlewares()
 
@@ -30,7 +34,7 @@ class Server {
 	}
 
 	listen(){
-		this.app.listen(Config.serverPort)
+		this.server.listen(Config.serverPort)
 		console.log(`App listening on port ${ Config.serverPort }`)
 	}
 }
