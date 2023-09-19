@@ -2,6 +2,7 @@ const cors = require('cors')
 const express = require('express')
 
 const Config = require('../config')
+const { randomUUID } = require('crypto')
 
 class Server {
 	constructor(){
@@ -49,8 +50,10 @@ class Server {
 				// console.log('Cliend disconnected', socket.id)
 			})
 
-			socket.on('send-message', (paylaod) => {
+			socket.on('send-message', (paylaod, callback) => {
 				// console.log('Message recived from client:', paylaod)
+				const id = randomUUID()
+				callback(id)
 				this.io.emit('notify-message', 'Message from server')
 			})
 		})
