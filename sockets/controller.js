@@ -1,15 +1,20 @@
 const { randomUUID } = require('crypto')
+const TicketControl = require('../models/TicketControl')
+
+const ticketControl = new TicketControl()
 
 const socketController = socket => {
 	socket.on('disconnect', () => { })
 
-	socket.on('send-message', (paylaod, callback) => {
-		const id = randomUUID()
-		callback(id)
+	socket.on('next-ticket', (paylaod, callback) => {
 
-		// Emit to all clients
-		socket.broadcast.emit('notify-message', 'Message from server')
+		const nextTicket = ticketControl.next()
+
+		callback( nextTicket )
 	})
+
+	
+	socket.emit('last-ticket', ticketControl.last)
 }
 
 module.exports = {
