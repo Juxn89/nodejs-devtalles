@@ -15,6 +15,22 @@ const socketController = socket => {
 
 	
 	socket.emit('last-ticket', ticketControl.last)
+
+	socket.on('attend-ticket', (paylaod, callback) => {
+		const { currentDesk } = paylaod
+
+		if(!currentDesk) {
+			return callback({ ok: false, msg: 'Desktop is mandatory' })
+		}
+
+		const ticket = ticketControl.attendTicket( currentDesk )
+		if(!ticket) {
+			callback({ ok: false, msg: `There are no pending tickes` })
+		}
+		else {
+			callback({ ok: true, ticket })
+		}
+	})
 }
 
 module.exports = {
