@@ -9,6 +9,7 @@ const lblDesktop = document.querySelector('h1')
 const divAlert = document.querySelector('.alert')
 const lblTicket = document.querySelector('small')
 const btnAttendNextTicket = document.querySelector('button')
+const lblPendientes = document.querySelector('#lblPendientes')
 
 const currentDesk = searchParams.get('escritorio')
 lblDesktop.innerText = currentDesk
@@ -25,6 +26,17 @@ socket.on('disconnect', () => {
 })
 
 socket.on('next-ticket', () => { })
+
+socket.on('pendding-tickets', (payload) => {
+	console.log(payload)
+	if(payload === 0) {
+		lblPendientes.style.display = 'none'
+	}
+	else {
+		lblPendientes.innerText = payload
+		lblPendientes.style.display = ''
+	}
+})
 
 btnAttendNextTicket.addEventListener('click', () => {
 	socket.emit('attend-ticket', { currentDesk }, (payload) => { 
