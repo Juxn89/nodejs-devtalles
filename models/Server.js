@@ -1,5 +1,6 @@
 const cors = require('cors')
 const express = require('express')
+const { createServer } = require('http')
 const fileUpload = require('express-fileupload')
 
 const Config = require('@config')
@@ -11,7 +12,9 @@ const {
 	uploadRoutes,
 	userRoutes, 
 } = require('@routes')
+
 const { dbConnection } = require('@db/config')
+const { socketController } = require('../socket/socketController')
 
 class Server {
 	constructor(){
@@ -25,6 +28,11 @@ class Server {
 
 		// Routes
 		this.routes()
+
+		// Socket.io
+		this.server = createServer(this.app)
+		this.io = require('socket.io')(this.server)
+		this.sockets()
 	}
 
 	async dbConnection(){
@@ -58,8 +66,12 @@ class Server {
 		this.app.use('/api/users', userRoutes)
 	}
 
+	sockets() {
+		this.io.on('connection', socketController)
+	}
+
 	listen(){
-		this.app.listen(Config.serverPort)
+		this.server.listen(Config.serverPort)
 		console.log(`App listening on port ${ Config.serverPort }`)
 	}
 }

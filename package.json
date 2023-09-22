@@ -1,5 +1,5 @@
 {
-  "name": "rest-server",
+  "name": "socket-chat",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -33,6 +33,7 @@
     "jsonwebtoken": "9.0.2",
     "module-alias": "2.2.3",
     "mongoose": "7.5.0",
+    "socket.io": "4.7.2",
     "uuid": "9.0.1"
   },
   "devDependencies": {
