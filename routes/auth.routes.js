@@ -1,11 +1,15 @@
 const { Router } = require('express')
 const { check } = require('express-validator')
 
-const { validateFields } = require('@middleware/')
+const { validateFields, validateJWT } = require('@middleware/')
 
-const { login, googleSingIn } = require('@controllers/auth.controller')
+const { login, googleSingIn, renewToken } = require('@controllers/auth.controller')
 
 const router = Router()
+
+router.get('/', [
+	validateJWT
+], renewToken)
 
 router.post('/login', [
 	check('email', 'Email is required').isEmail(),

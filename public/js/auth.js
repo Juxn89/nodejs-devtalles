@@ -31,6 +31,7 @@ function handleCredentialResponse(response) {
 			
 			const { token } = response
 			localStorage.setItem('x-token', token)
+			window.location = 'chat.html'
 		})
 		.catch((err) => console.error(err));
 }
@@ -58,6 +59,7 @@ formAuthentication.addEventListener('submit', (event) => {
 
 		console.log(data)
 		localStorage.setItem('x-token', token)
+		window.location = 'chat.html'
 	})
 	.catch(err => console.error(err))
 })

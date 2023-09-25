@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 const { response, request } = require('express')
 
 const { Users } = require('@models')
@@ -87,7 +88,19 @@ const googleSingIn = async (req = request, res = response) => {
 	}
 }
 
+const renewToken = async (req = request, res = response) => {
+	const { user, uid } = req
+
+	const token = await generateJWT(uid)
+
+	return res.status(httpStatus.ok).json({
+		user,
+		token
+	})
+}
+
 module.exports = {
+	googleSingIn,
 	login,
-	googleSingIn
+	renewToken
 }
