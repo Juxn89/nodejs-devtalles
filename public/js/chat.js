@@ -1,6 +1,12 @@
 let currentUser = null;
 let socket = null;
 
+const txtUid = document.querySelector('#txtUid')
+const txtMessage = document.querySelector('#txtMessage')
+const ulUsers = document.querySelector('#ulUsers')
+const ulMessage = document.querySelector('#ulMessage')
+const btnLeave = document.querySelector('#btnLeave')
+
 const validateJWT = async () => {
 	const token = localStorage.getItem('x-token') || ''
 
@@ -24,11 +30,21 @@ const validateJWT = async () => {
 }
 
 const connectToSocket = async () => {
-	const socket = io({
+	socket = io({
 		'extraHeaders': {
 			'x-token': localStorage.getItem('x-token')
 		}
 	})
+
+	socket.on('connect', () => { console.log('Socket server online!') })
+
+	socket.on('disconnect', () => { console.log('Socket server offline') })
+
+	socket.on('receive-message', (payload) => { })
+	
+	socket.on('active-users', (payload) => { })
+
+	socket.on('private-message', (payload) => { })
 }
 
 const main = async () => {
