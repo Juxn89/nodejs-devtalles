@@ -49,7 +49,9 @@ const connectToSocket = async () => {
 		showUsers(payload)
 	})
 
-	socket.on('private-message', (payload) => { })
+	socket.on('private-message', (payload) => { 
+		console.log('Private message')
+	})
 }
 
 const showUsers = (users = []) => {

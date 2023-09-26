@@ -27,11 +27,17 @@ const socketController = async (socket, io) => {
 	socket.on('send-message', (payload) => {
 		const { uid, message } = payload
 
-		chatMessage.sendMessage(user.id, user.name, message)
-		io.emit('reveive-message', chatMessage.lastMessages)
-		
+		if(uid) {
+			socket.to(uid).emit('private-message', { from: user.name, message })
+		} else {
+			chatMessage.sendMessage(user.id, user.name, message)
+			io.emit('reveive-message', chatMessage.lastMessages)			
+		}
+
 		console.log(payload)
 	})
+
+	socket.join(user.id)
 }
 
 module.exports = {
