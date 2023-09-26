@@ -42,9 +42,29 @@ const connectToSocket = async () => {
 
 	socket.on('receive-message', (payload) => { })
 	
-	socket.on('active-users', (payload) => { })
+	socket.on('active-users', (payload) => { 
+		//console.log(payload)
+		showUsers(payload)
+	})
 
 	socket.on('private-message', (payload) => { })
+}
+
+const showUsers = (users = []) => {
+	let usersHTML = ''
+
+	users.forEach(user => {
+		usersHTML += `
+			<li>
+				<p>
+					<h5 class="text-success">${ user.name }</h5>
+					<span class="fs-6 text-muted">${ user.id }</span>
+				</p>
+			</li>
+		`
+	})
+
+	ulUsers.innerHTML = usersHTML
 }
 
 const main = async () => {
