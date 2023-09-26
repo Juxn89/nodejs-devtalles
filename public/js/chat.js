@@ -40,7 +40,9 @@ const connectToSocket = async () => {
 
 	socket.on('disconnect', () => { console.log('Socket server offline') })
 
-	socket.on('receive-message', (payload) => { })
+	socket.on('receive-message', (payload) => { 
+		showMessages(payload)
+	})
 	
 	socket.on('active-users', (payload) => { 
 		//console.log(payload)
@@ -66,6 +68,41 @@ const showUsers = (users = []) => {
 
 	ulUsers.innerHTML = usersHTML
 }
+
+const showMessages = (messages = []) => {
+	let messagesHTML = ''
+
+	messages.forEach(message => {
+		messagesHTML += `
+			<li>
+				<p>
+					<span class="text-primary">${ message.name }</span>
+					<span>${ message.message }</span>
+				</p>
+			</li>
+		`
+	})
+
+	ulMessage.innerHTML = messagesHTML
+}
+
+txtMessage.addEventListener('keyup', (event) => { 
+	const { keyCode } = event
+
+	const uid = txtUid.value;
+	const message = txtMessage.value;
+
+	if(keyCode !== 13) return;
+	if(message.length === 0) return;
+
+	const payload = {
+		uid,
+		message
+	}
+
+	socket.emit('send-message', payload)
+	txtMessage.value = ''
+})
 
 const main = async () => {
 	await validateJWT();

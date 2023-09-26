@@ -23,6 +23,15 @@ const socketController = async (socket, io) => {
 		chatMessage.disconnect(user.id)
 		io.emit('active-users', chatMessage.usersArray)
 	})
+
+	socket.on('send-message', (payload) => {
+		const { uid, message } = payload
+
+		chatMessage.sendMessage(user.id, user.name, message)
+		io.emit('reveive-message', chatMessage.lastMessages)
+		
+		console.log(payload)
+	})
 }
 
 module.exports = {
