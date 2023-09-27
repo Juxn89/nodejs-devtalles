@@ -1,3 +1,6 @@
+# My Ignores
+mysql_data
+
 # Logs
 logs
 *.log
