@@ -9,7 +9,7 @@ console.log({ ...dbConfig })
 const db = new Sequelize(dbConfig.dbName, dbConfig.dbUser, dbConfig.dbPassword, {
 	host: dbConfig.dbServer,
 	dialect: 'mysql',
-	port: 3306
+	port: Number(dbConfig.dbPort)
 	//logging: false
 })
 
