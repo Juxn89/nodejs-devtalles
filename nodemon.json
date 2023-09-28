@@ -1,10 +1,10 @@
 {
 	"env": {
 		"PORT": "3000",
-		"MYSQL_DB_SERVER": "172.20.0.3",
+		"MYSQL_DB_SERVER": "localhost",
 		"MYSQL_DATABASE": "TS_REST_SERVE_MYSQL",
 		"MYSQL_USER": "root",
 		"MYSQL_ROOT_PASSWORD": "dontTienePassword123",
-		"MYSQL_PORT": "3456"
+		"MYSQL_PORT": "3306"
 	}
 }
