@@ -70,7 +70,9 @@ export const deleteUser = async (req: Request, res: Response) => {
 		if(!user)
 			return res.status(404).json({ msg: `User with ID : ${id} not found` })
 
-		await user.update({...body, isActive: false})
+		await user.update({isActive: false})
+
+		// await user.destroy()
 
 		res.status(200).json({ user })
 	} catch (error) {
