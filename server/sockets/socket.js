@@ -37,4 +37,9 @@ io.on('connection', (client) => {
 		let message = createMessage(person.name, data.message)
 		client.broadcast.emit('createMessage', message)
 	})
+
+	socket.on('privateMessage', (payload) => {
+		let person = users.getPerson(client.id)
+		client.broadcast.to(payload.to).emit('privateMessage', createMessage(person.name, payload.message))
+	})
 });

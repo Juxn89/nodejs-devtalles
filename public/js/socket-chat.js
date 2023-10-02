@@ -40,3 +40,7 @@ socket.on('createMessage', function(mensaje) {
 socket.on('PeopleList', (response) => {
 	console.log(response)
 })
+
+socket.on('privateMessage', (message) => {
+	console.log('Private message: ', message)
+})
