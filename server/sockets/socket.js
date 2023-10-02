@@ -10,14 +10,16 @@ io.on('connection', (client) => {
 	client.on('entranceChat', (payload, callback) => {
 		console.log(payload)
 
-		if(!payload.name) {
+		if(!payload.name || !data.room) {
 			return callback({
 				err: true,
-				message: `User name is mandatory`
+				message: `User name / room are mandatory`
 			})
 		}
+
+		client.join(payload.room)
 		
-		let people = users.addPerson(client.id, payload.name)
+		let people = users.addPerson(client.id, payload.name, payload.room)
 
 		client.broadcast.emit( 'PeopleList', users.getPeople() )
 
