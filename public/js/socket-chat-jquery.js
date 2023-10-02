@@ -17,3 +17,10 @@ function renderUsers (users = []) {
 
 	divUsuarios.html(html)
 }
+
+divUsuarios.on('click', 'a', function() {
+	const id = $(this).data('id')
+	if(id) {
+		console.log(id)
+	}
+})
