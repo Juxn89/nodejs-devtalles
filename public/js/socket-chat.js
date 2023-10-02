@@ -16,7 +16,7 @@ socket.on('connect', function() {
   console.log('Conectado al servidor');
 
 	socket.emit('entranceChat', user, (response) => {
-		console.log('Users connected: ', response)
+		renderUsers(response)
 	})
 });
 
@@ -39,7 +39,7 @@ socket.on('createMessage', function(mensaje) {
 });
 
 socket.on('PeopleList', (response) => {
-	console.log(response)
+	renderUsers(response)
 })
 
 socket.on('privateMessage', (message) => {
