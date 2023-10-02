@@ -19,25 +19,25 @@ io.on('connection', (client) => {
 
 		client.join(payload.room)
 		
-		let people = users.addPerson(client.id, payload.name, payload.room)
+		users.addPerson(client.id, payload.name, payload.room)
 
-		client.broadcast.emit( 'PeopleList', users.getPeople() )
+		client.broadcast.to(data.room).emit( 'PeopleList', users.getPersonByRoom(payload.room) )
 
-		callback( people )
+		callback( users.getPersonByRoom(payload.room) )
 	})
 
 	client.on('disconnect', () => {
 		const userRemoved = users.removePerson(client.id)
 
-		client.broadcast.emit('createMessage', createMessage('Admin', `${userRemoved} left chat`))
-		client.broadcast.emit( 'PeopleList', users.getPeople() )
+		client.broadcast.to(userRemoved.room).emit('createMessage', createMessage('Admin', `${userRemoved} left chat`))
+		client.broadcast.to(userRemoved.room).emit( 'PeopleList', users.getPersonByRoom(userRemoved.room) )
 	})
 
 	client.on('createMessage', (data) => {
 		let person = users.getPerson(client.id)
 
 		let message = createMessage(person.name, data.message)
-		client.broadcast.emit('createMessage', message)
+		client.broadcast.to(person.room).emit('createMessage', message)
 	})
 
 	socket.on('privateMessage', (payload) => {
