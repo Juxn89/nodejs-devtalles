@@ -1,5 +1,6 @@
 const { io } = require('../server');
 const Users = require('../classes/users')
+const { createMessage } = require('../utils/utils')
 
 const users = new Users()
 
@@ -17,6 +18,23 @@ io.on('connection', (client) => {
 		}
 		
 		let people = users.addPerson(client.id, payload.name)
+
+		client.broadcast.emit( 'PeopleList', users.getPeople() )
+
 		callback( people )
+	})
+
+	client.on('disconnect', () => {
+		const userRemoved = users.removePerson(client.id)
+
+		client.broadcast.emit('createMessage', createMessage('Admin', `${userRemoved} left chat`))
+		client.broadcast.emit( 'PeopleList', users.getPeople() )
+	})
+
+	client.on('createMessage', (data) => {
+		let person = users.getPerson(client.id)
+
+		let message = createMessage(person.name, data.message)
+		client.broadcast.emit('createMessage', message)
 	})
 });
