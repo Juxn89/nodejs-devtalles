@@ -22,8 +22,9 @@ io.on('connection', (client) => {
 		users.addPerson(client.id, payload.name, payload.room)
 
 		client.broadcast.to(data.room).emit( 'PeopleList', users.getPersonByRoom(payload.room) )
+		client.broadcast.to(data.room).emit('createMessage', createMessage('Admin', `${data.nama} left chat`))
 
-		callback( users.getPersonByRoom(payload.room) )
+		callback( users.data(payload.room) )
 	})
 
 	client.on('disconnect', () => {
