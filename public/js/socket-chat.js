@@ -36,6 +36,7 @@ socket.on('disconnect', function() {
 // Escuchar información
 socket.on('createMessage', function(mensaje) {
 	console.log('Servidor:', mensaje);
+	RenderMessage(mensaje)
 });
 
 socket.on('PeopleList', (response) => {

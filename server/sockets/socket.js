@@ -38,6 +38,8 @@ io.on('connection', (client) => {
 
 		let message = createMessage(person.name, data.message)
 		client.broadcast.to(person.room).emit('createMessage', message)
+
+		callback(message)
 	})
 
 	socket.on('privateMessage', (payload) => {
